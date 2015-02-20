@@ -8,6 +8,13 @@ y1inv <- matrix(c(-2,1,1.5,-0.5), ncol=2)
 y2 <- matrix(c(7:10), ncol=2)
 y2inv <- matrix(c(-5,4,4.5,-3.5), ncol=2)
 
+# base cases
+x <- makeCacheMatrix()
+assert("x is na", all.equal(is.na(x$get()), is.na(matrix())))
+assert("empty cache", is.null(x$getinverse()))
+xinv <- cacheSolve(x)
+assert("inverse is na", all.equal(is.na(xinv), is.na(matrix())))
+
 # test the constructor
 x <- makeCacheMatrix(y1)
 assert("set/get", all.equal(y1, x$get()))
